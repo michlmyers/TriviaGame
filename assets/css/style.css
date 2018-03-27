@@ -2,18 +2,22 @@
     font-family: sans-serif;
   }
   
+header {
+    font-family: 'Press Start 2P', cursive;
+  }
+
 div:first-of-type {
     display: flex;
     align-items: flex-start;
     margin-bottom: 5px;
   }
   
-  label {
+label {
     margin-right: 15px;
     line-height: 32px;
   }
   
-  input {
+input {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -29,13 +33,13 @@ div:first-of-type {
   
     position: relative;
     top: 4px;
-  }
+}
   
   input:checked {
     border: 6px solid black;
   }
   
-  button,
+ button,
   legend {
     color: white;
     background-color: black;
