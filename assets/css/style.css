@@ -1,10 +1,6 @@
 .container {
     font-family: sans-serif;
   }
-  
-header {
-    font-family: 'Press Start 2P', cursive;
-  }
 
 div:first-of-type {
     display: flex;
@@ -26,7 +22,7 @@ input {
     width: 16px;
     height: 16px;
   
-    border: 2px solid #999;
+    border: 2px dotted rgb(11, 226, 241);
     transition: 0.2s all linear;
     outline: none;
     margin-right: 5px;
@@ -36,10 +32,10 @@ input {
 }
   
   input:checked {
-    border: 6px solid black;
+    border: 6px solid rgb(233, 10, 253);
   }
   
- button,
+
   legend {
     color: white;
     background-color: black;
@@ -57,5 +53,5 @@ input {
   button:active {
     background-color: white;
     color: black;
-    outline: 1px solid black;
+    outline: 1px solid rgb(0, 0, 0);
   }
