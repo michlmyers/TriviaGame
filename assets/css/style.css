@@ -7,6 +7,16 @@ div:first-of-type {
     align-items: flex-start;
     margin-bottom: 5px;
   }
+
+#start {
+    width: 100%;
+    height: 300px;
+    font-size: 100px;
+}  
+
+.hidden {
+    display: none;
+}
   
 label {
     margin-right: 15px;
