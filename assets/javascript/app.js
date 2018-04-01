@@ -54,6 +54,7 @@ $(document).ready(function () {
     }
 
     // function to run stop if user clicks finished
+    $('#finished').on('click', stop);
 
     // setting the stop function
     function stop() {
