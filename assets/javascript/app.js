@@ -1,32 +1,38 @@
 var startTimeout;
-var countDown = 11;
+var countDown = 16;
 var intervalId;
-// corrent answer array
-
 var userAnswers = [];
 var right = 0;
 var wrong = 0;
 
 $(document).ready(function () {
 
-    $("#start").on("click", run);
+    // adding link for audio
+    var audioElement = document.createElement('audio');
+    audioElement.setAttribute('src', 'assets/audio/Gremlins.mp3');
+
+    $('#start').on('click', run);
 
     // setting the run function 
     function run() {
         // unhide the game questions
         $('#fullGame').removeClass('hidden');
         clearInterval(intervalId);
+        audioElement.load();
+        audioElement.play();
+        $('#start').addClass('hidden');
+        $('#replay').addClass('hidden');
         intervalId = setInterval(decrement, 1000);
     }
 
     // setting the countdown function 
     function decrement() {
         countDown--;
-        $("#counter").html("<h2>" + countDown + "</h2>");
+        $('#counter').html('<h2>' + countDown + '</h2>');
+        $('h2').css({ 'background-color': 'purple', 'width': '30px', 'padding': '5px' });
         if (countDown === 0) {
             stop();
-            console.log("My Stop has worked");
-            alert("You ran out of time!");
+            alert("Wait a minute. Wait a minute, Doc. Ah... Are you telling me that you built a time machine... out of a DeLorean?");
         }
     }
 
@@ -49,18 +55,37 @@ $(document).ready(function () {
         }
         console.log(matches.length);
         $('#fullGame').addClass('hidden');
-        $('#playerRight').text('YOU GOT THIS MANY RIGHT: ' + matches.length);
-        $('#playerWrong').text('YOU GOT THIS MANY WRONG: ' + (5 - matches.length));
+        $('#playerRight').text('TOTALLY RADICAL CHOICES: ' + matches.length);
+        $('#playerWrong').text('WRONG-O-RAMA: ' + (5 - matches.length));
     }
 
-    // function to run stop if user clicks finished
+    // call stop if user clicks finished
     $('#finished').on('click', stop);
+
+    // function run if user clicks replay
+    function restart() {
+        // localStorage.clear();
+        countDown = 16;
+        $('#playerRight').text('');
+        $('#playerWrong').text('');
+        run();
+        $('#q1Choice1').prop('checked', true);
+        $('#q2Choice1').prop('checked', true);
+        $('#q3Choice1').prop('checked', true);
+        $('#q4Choice1').prop('checked', true);
+        $('#q5Choice1').prop('checked', true);
+    }
+
+    // call restart if user clicks replay
+    $('#replay').on('click', restart);
 
     // setting the stop function
     function stop() {
         clearInterval(intervalId);
         getUserAnswers();
         scoreAnswers();
+        audioElement.pause();
+        $('#replay').removeClass('hidden');
     }
 
 });
