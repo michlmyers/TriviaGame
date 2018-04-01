@@ -1,5 +1,5 @@
 var startTimeout;
-var countDown = 16;
+var countDown = 26;
 var intervalId;
 var userAnswers = [];
 var right = 0;
@@ -40,13 +40,14 @@ $(document).ready(function () {
     function getUserAnswers() {
         userAnswers = [$('input[name=backFuture]:checked').val(),
         $('input[name=gizMo]:checked').val(), $('input[name=gBuster]:checked').val(),
-        $('input[name=shine]:checked').val(), $('input[name=alPac]:checked').val(),];
+        $('input[name=shine]:checked').val(), $('input[name=alPac]:checked').val(),
+        $('input[name=jones]:checked').val(), $('input[name=boombox]:checked').val()];
         console.log(userAnswers);
     }
 
     // set the fuction to score the answers and tally    
     function scoreAnswers() {
-        var myAnswers = ['DeLorean', 'Gremlins', 'Ghostbusters', 'Stanley Kubrick', 'Tony Montana'];
+        var myAnswers = ['DeLorean', 'Gremlins', 'Ghostbusters', 'Stanley Kubrick', 'Tony Montana', 'Last Crusade', 'In Your Eyes'];
         var matches = [];
         for (var i = 0; i < userAnswers.length; i++) {
             for (var j = 0; j < myAnswers.length; j++) {
@@ -56,7 +57,7 @@ $(document).ready(function () {
         console.log(matches.length);
         $('#fullGame').addClass('hidden');
         $('#playerRight').text('TOTALLY RADICAL CHOICES: ' + matches.length);
-        $('#playerWrong').text('WRONG-O-RAMA: ' + (5 - matches.length));
+        $('#playerWrong').text('WRONG-O-RAMA: ' + (7 - matches.length));
     }
 
     // call stop if user clicks finished
@@ -65,7 +66,7 @@ $(document).ready(function () {
     // function run if user clicks replay
     function restart() {
         // localStorage.clear();
-        countDown = 16;
+        countDown = 26;
         $('#playerRight').text('');
         $('#playerWrong').text('');
         run();
@@ -74,6 +75,8 @@ $(document).ready(function () {
         $('#q3Choice1').prop('checked', true);
         $('#q4Choice1').prop('checked', true);
         $('#q5Choice1').prop('checked', true);
+        $('#q6Choice1').prop('checked', true);
+        $('#q7Choice1').prop('checked', true);
     }
 
     // call restart if user clicks replay
