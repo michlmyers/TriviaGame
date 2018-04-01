@@ -1,5 +1,5 @@
 var startTimeout;
-var countDown = 10;
+var countDown = 11;
 var intervalId;
 // corrent answer array
 
@@ -39,25 +39,18 @@ $(document).ready(function () {
     }
 
     // set the fuction to score the answers and tally    
-    function scoreAnswers(){
+    function scoreAnswers() {
         var myAnswers = ['DeLorean', 'Gremlins', 'Ghostbusters', 'Stanley Kubrick', 'Tony Montana'];
         var matches = [];
-            for (var i = 0; i < userAnswers.length; i++) {
-                for (var j = 0; j < myAnswers.length; j++) {
-                    if ( userAnswers[i] === myAnswers[j] ) matches.push(userAnswers[i]);                    
-                }
+        for (var i = 0; i < userAnswers.length; i++) {
+            for (var j = 0; j < myAnswers.length; j++) {
+                if (userAnswers[i] === myAnswers[j]) matches.push(userAnswers[i]);
             }
-            console.log(matches);
-        
-        var r = 0;
-        var w = 0;
-
-        console.log('this will equal my correct answers: ' + r);
-        console.log('this will equal the user answers: ' + w);
-
-       $('#playerRight').text('hi im the right: ' + matches);
-       $('#playerWrong').text('im the wrong amount of guesses');
-  
+        }
+        console.log(matches.length);
+        $('#fullGame').addClass('hidden');
+        $('#playerRight').text('YOU GOT THIS MANY RIGHT: ' + matches.length);
+        $('#playerWrong').text('YOU GOT THIS MANY WRONG: ' + (5 - matches.length));
     }
 
     // function to run stop if user clicks finished
