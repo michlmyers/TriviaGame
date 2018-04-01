@@ -2,8 +2,10 @@ var startTimeout;
 var countDown = 10;
 var intervalId;
 // corrent answer array
-var myAnswers = ['Tesla', 'Gremlins', 'Ghostbusters', 'Stanley Kubrick', 'Tony Montana'];
+
 var userAnswers = [];
+var right = 0;
+var wrong = 0;
 
 $(document).ready(function () {
 
@@ -24,7 +26,7 @@ $(document).ready(function () {
         if (countDown === 0) {
             stop();
             console.log("My Stop has worked");
-            alert("You fuggin lost!");
+            alert("You ran out of time!");
         }
     }
 
@@ -38,13 +40,33 @@ $(document).ready(function () {
 
     // set the fuction to score the answers and tally    
     function scoreAnswers(){
+        var myAnswers = ['DeLorean', 'Gremlins', 'Ghostbusters', 'Stanley Kubrick', 'Tony Montana'];
+        var matches = [];
+            for (var i = 0; i < userAnswers.length; i++) {
+                for (var j = 0; j < myAnswers.length; j++) {
+                    if ( userAnswers[i] === myAnswers[j] ) matches.push(userAnswers[i]);                    
+                }
+            }
+            console.log(matches);
         
+        var r = 0;
+        var w = 0;
+
+        console.log('this will equal my correct answers: ' + r);
+        console.log('this will equal the user answers: ' + w);
+
+       $('#playerRight').text('hi im the right: ' + matches);
+       $('#playerWrong').text('im the wrong amount of guesses');
+  
     }
+
+    // function to run stop if user clicks finished
 
     // setting the stop function
     function stop() {
         clearInterval(intervalId);
         getUserAnswers();
+        scoreAnswers();
     }
 
 });
